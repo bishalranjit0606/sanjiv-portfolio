@@ -1,7 +1,34 @@
 import type { Site, SocialObjects } from "./types";
 
+/**
+ * Public URL visitors use.
+ * GitHub Pages: include the repository path.
+ * Custom domain: set this to that origin only, with a trailing slash.
+ * `DEPLOY.site` and `DEPLOY.base` are derived from this value.
+ */
+const PUBLIC_WEBSITE = "https://bishalranjit0606.github.io/sanjiv-portfolio/";
+
+function deployTarget(website: string) {
+  const url = new URL(website);
+  const pathname = url.pathname.replace(/\/$/, "");
+
+  return {
+    website: `${url.origin}${pathname}/`,
+    site: url.origin,
+    base: pathname === "" ? "/" : pathname,
+  };
+}
+
+const target = deployTarget(PUBLIC_WEBSITE);
+
+/** Values passed to Astro `site` and `base`. */
+export const DEPLOY = {
+  site: target.site,
+  base: target.base,
+};
+
 export const SITE: Site = {
-  website: "https://astro-paper.pages.dev/", // replace this with your deployed domain
+  website: target.website,
   author: "Sat Naing",
   desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
   title: "AstroPaper",

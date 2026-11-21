@@ -4,11 +4,13 @@ import react from "@astrojs/react";
 import remarkToc from "remark-toc";
 import remarkCollapse from "remark-collapse";
 import sitemap from "@astrojs/sitemap";
-import { SITE } from "./src/config";
+import { DEPLOY } from "./src/config";
+import { rehypePrefixBase } from "./src/utils/rehypePrefixBase";
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE.website,
+  site: DEPLOY.site,
+  base: DEPLOY.base,
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -30,6 +32,7 @@ export default defineConfig({
       theme: "one-dark-pro",
       wrap: true,
     },
+    rehypePlugins: [rehypePrefixBase(DEPLOY.base)],
   },
   vite: {
     optimizeDeps: {

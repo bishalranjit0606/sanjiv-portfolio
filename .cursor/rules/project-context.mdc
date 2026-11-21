@@ -1,0 +1,36 @@
+---
+description: Permanent architectural and product context for Sanjiv Portfolio
+alwaysApply: true
+---
+
+# Sanjiv Portfolio
+
+Sanjiv Portfolio is a personal portfolio site. Blogging is the main feature. The owner should publish articles without opening Cursor, writing code, or deploying by hand.
+
+Read `docs/PROJECT_CONTEXT.md` before architectural decisions or substantial feature changes. After a major feature, stack change, or publishing change, update that file so it matches the code.
+
+## Stack
+
+- Astro static site, TypeScript, and the Tailwind CSS already in the repo. React 18 is already used for a few islands (search, cards, dates). Keep that scope.
+- Pages CMS saves Markdown posts to `src/content/blog` in this GitHub repo.
+- GitHub Actions should build the site. GitHub Pages hosts it for free.
+- No database. No backend server. No paid or usage-based services.
+- Do not add Next.js, Express, PostgreSQL, MongoDB, Firebase, Supabase, or another backend unless the owner explicitly approves it.
+
+## Publishing
+
+Owner edits in Pages CMS. Pages CMS commits to `bishalranjit0606/sanjiv-portfolio`. GitHub Actions rebuilds. GitHub Pages publishes. Drafts stay private until published.
+
+Preserve `.pages.yml` and the current content paths unless a change is required. Schema changes must work in both Astro and Pages CMS.
+
+`.github/workflows/deploy.yml` publishes this repo to GitHub Pages on every push to `main`. `.github/workflows/_studio.yml` is leftover Astro Studio config. It is not the publishing pipeline and it is not a reason to add a database.
+
+## Boundaries
+
+- Work only in `bishalranjit0606/sanjiv-portfolio`.
+- Never modify the separate `bishalranjit0606.github.io` repository.
+- Public URL is `PUBLIC_WEBSITE` in `src/config.ts`. Astro `site` and `base` are derived from it. Today that is `https://bishalranjit0606.github.io/sanjiv-portfolio/`. For a custom domain, change `PUBLIC_WEBSITE` to that origin only. Use `withBase()` for in-site links.
+- Do not invent personal details. Branding comes from the owner.
+- Do not commit or push unless asked.
+- Do not remove sample posts until blog publishing has been verified.
+- Do not expose secrets.

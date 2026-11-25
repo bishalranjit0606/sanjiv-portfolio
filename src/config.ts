@@ -6,7 +6,7 @@ import type { Site, SocialObjects } from "./types";
  * Custom domain: set this to that origin only, with a trailing slash.
  * `DEPLOY.site` and `DEPLOY.base` are derived from this value.
  */
-const PUBLIC_WEBSITE = "https://bishalranjit0606.github.io/sanjiv-portfolio/";
+const PUBLIC_WEBSITE = "https://bishalranjitkar.com.np/sanjiv-portfolio/";
 
 function deployTarget(website: string) {
   const url = new URL(website);
@@ -29,12 +29,12 @@ export const DEPLOY = {
 
 export const SITE: Site = {
   website: target.website,
-  author: "Sat Naing",
-  desc: "A minimal, responsive and SEO-friendly Astro blog theme.",
-  title: "AstroPaper",
+  author: "Sanjiv",
+  desc: "A personal blog.",
+  title: "Sanjiv",
   ogImage: "astropaper-og.jpg",
   lightAndDarkMode: true,
-  postPerPage: 3,
+  postPerPage: 10,
   scheduledPostMargin: 15 * 60 * 1000, // 15 minutes
 };
 
@@ -55,25 +55,25 @@ export const SOCIALS: SocialObjects = [
     name: "Github",
     href: "https://github.com/satnaing/astro-paper",
     linkTitle: ` ${SITE.title} on Github`,
-    active: true,
+    active: false,
   },
   {
     name: "Facebook",
     href: "https://github.com/satnaing/astro-paper",
     linkTitle: `${SITE.title} on Facebook`,
-    active: true,
+    active: false,
   },
   {
     name: "Instagram",
     href: "https://github.com/satnaing/astro-paper",
     linkTitle: `${SITE.title} on Instagram`,
-    active: true,
+    active: false,
   },
   {
     name: "LinkedIn",
     href: "https://github.com/satnaing/astro-paper",
     linkTitle: `${SITE.title} on LinkedIn`,
-    active: true,
+    active: false,
   },
   {
     name: "Mail",
